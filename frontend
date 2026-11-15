@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Welcome App</h2>
+  <input id="nameBox" placeholder="Unga peyar">
+  <button onclick="sendName()">Click Me</button>
+  <p id="result"></p>
+
+  <script>
+    async function sendName() {
+      const name = document.getElementById("nameBox").value;
+      const response = await fetch("http://localhost:5000/greet?name=" + name);
+      const data = await response.json();
+      document.getElementById("result").innerText = data.message;
+    }
+  </script>
+</body>
+</html>

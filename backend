@@ -1,0 +1,13 @@
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)  # frontend-ah backend kuda pesa allow panradhu
+
+@app.route("/greet")
+def greet():
+    name = request.args.get("name", "Friend")
+    message = f"Vanakkam {name}! Backend-la irundhu vandhen 😄"
+    return jsonify({"message": message})
+
+app.run(port=5000)
